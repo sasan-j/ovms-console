@@ -1,0 +1,16 @@
+The serial terminal I developped. It needs to be executed on the computer with a serial cable plugged on the OVMS module.
+
+Important commands to make, build and execute :
+
+./gen_make.sh -od objects -s -c gcc "./release_build/ovms_controller" > Makefile && make
+
+Copy to target computer and execute (need ssh key registered in authorized key).
+
+scp ./release_build/ovms_controller root@10.91.1.94:~/dev && ssh -t root@10.91.1.94 'cd dev && ./ovms_controller'
+
+scp ./release_build/ovms_controller root@10.42.0.1:~/dev && ssh -t root@10.42.0.1 'cd dev && ./ovms_controller'
+
+
+
+scp ./release_build/ovms_controller root@192.168.0.103:~/dev && ssh -t root@10.91.1.94 'cd dev && ./ovms_controller'
+
