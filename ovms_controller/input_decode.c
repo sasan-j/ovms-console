@@ -168,22 +168,28 @@ int cmd_decode(int *mode, char c)
 				break;
 			case 'o': // fwd=1 back=0
 				send("s cfg write 2121 0 1\rs cfg write 2122 0 0\r");
-				printf ("\n ## ## << Forward >> \n") ;
+				printf ("\n ## ## << Forward Gear>> \n") ;
 				break;
 			case 'p': // fwd=0 back=1
 				send("s cfg write 2121 0 0\rs cfg write 2122 0 1\r");
-				printf ("\n ## ## << Backward >> \n") ;
+				printf ("\n ## ## << Reverse Gear >> \n") ;
+				break;
+			case 'i': // fwd=0 back=0
+				send("s cfg write 2121 0 0\rs cfg write 2122 0 0\r");
+				printf ("\n ## ## << Neutral >> \n") ;
 				break;
 			case 'l': // fwd=back=0
 				send("s cfg write 2121 0 0\rs cfg write 2122 0 0\r");
 				printf ("\n ## ## << Neutral >> \n") ;
 				break;
 			case 'j': // override the throttle
-				send("s cfg write 2910 4 16000\r");
+				send("s cfg write 2910 4 4000\r");//start value
+				send("s cfg write 2910 6 4000\r");//end value
 				printf ("\n ## ## << THROTTLE Override >> \n") ;
 				break;
 			case 'k': // throttle back to normal
 				send("s cfg write 2910 4 32769\r");
+				send("s cfg write 2910 6 32767\r");
 				printf ("\n ## ## << THROTTLE Back to Normal >> \n") ;
 				break;
 			case ',': // lock speed to 5
